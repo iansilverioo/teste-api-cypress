@@ -12,6 +12,11 @@ pipeline {
         bat 'npm install'
       }
     }
+    stage('Subir Servidor') {
+      steps {
+        bat 'npm start'
+      }
+    }
     stage('Executar Testes') {
       steps {
         bat '''NO_COLOR=1 
