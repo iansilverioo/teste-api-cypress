@@ -1,27 +1,26 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Clonar o repositório') {
-      steps {
-        git branch: 'master', url: 'https://github.com/iansilverioo/teste-api-cypress.git'
-      }
+    stages {
+        stage('Clonar o repositorio') {
+            steps {
+               git branch: 'main', url: 'https://github.com/Kellyfiocchi/testes-api-cy.git'
+            }
+        }
+     stage('Instalar dependencias') {
+            steps {
+               sh 'npm install' 
+            }
+        }
+        stage('Executar servidor') {
+            steps {
+               sh 'npm start' 
+            }
+        }
+     stage('Executar testes') {
+            steps {
+               sh 'npx cypress run'
+            }
+        }
     }
-    stage('instalar dependencias') {
-      steps {
-        bat 'npm install'
-      }
-    }
-    stage('Subir Servidor') {
-      steps {
-        bat 'npm start'
-      }
-    }
-    stage('Executar Testes') {
-      steps {
-        bat '''NO_COLOR=1 
-        npm run cy:run'''
-      }
-    }
-  }
 }
