@@ -9,17 +9,17 @@ pipeline {
         }
      stage('Instalar dependencias') {
             steps {
-               sh 'npm install' 
+               bat 'npm install' 
             }
         }
         stage('Executar servidor') {
             steps {
-               sh 'npm start' 
+               bat 'npm start' 
             }
         }
      stage('Executar testes') {
             steps {
-               sh 'npx cypress run'
+               bat 'npx cypress run'
             }
         }
     }
